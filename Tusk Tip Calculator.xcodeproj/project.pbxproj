@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A693F021D4402250034FD9F /* Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A693F011D4402240034FD9F /* Calculations.m */; };
 		2A8780691D3ED78F008359FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8780681D3ED78F008359FA /* main.m */; };
 		2A87806C1D3ED78F008359FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A87806B1D3ED78F008359FA /* AppDelegate.m */; };
 		2A87806F1D3ED78F008359FA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A87806E1D3ED78F008359FA /* ViewController.m */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A693F001D4402240034FD9F /* Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculations.h; sourceTree = "<group>"; };
+		2A693F011D4402240034FD9F /* Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculations.m; sourceTree = "<group>"; };
 		2A8780641D3ED78E008359FA /* Tusk Tip Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tusk Tip Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A8780681D3ED78F008359FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2A87806A1D3ED78F008359FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -62,6 +65,8 @@
 				2A87806B1D3ED78F008359FA /* AppDelegate.m */,
 				2A87806D1D3ED78F008359FA /* ViewController.h */,
 				2A87806E1D3ED78F008359FA /* ViewController.m */,
+				2A693F001D4402240034FD9F /* Calculations.h */,
+				2A693F011D4402240034FD9F /* Calculations.m */,
 				2A8780701D3ED78F008359FA /* Main.storyboard */,
 				2A8780731D3ED78F008359FA /* Assets.xcassets */,
 				2A8780751D3ED78F008359FA /* LaunchScreen.storyboard */,
@@ -153,6 +158,7 @@
 				2A87806F1D3ED78F008359FA /* ViewController.m in Sources */,
 				2A87806C1D3ED78F008359FA /* AppDelegate.m in Sources */,
 				2A8780691D3ED78F008359FA /* main.m in Sources */,
+				2A693F021D4402250034FD9F /* Calculations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +309,7 @@
 				2A87807D1D3ED78F008359FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

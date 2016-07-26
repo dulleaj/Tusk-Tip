@@ -205,11 +205,17 @@
                                     <action selector="button7WasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iUO-Uw-Rhd"/>
                                 </connections>
                             </button>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Oeb-92-CUv">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Oeb-92-CUv">
                                 <rect key="frame" x="0.0" y="245" width="94" height="29"/>
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="LJh-Zg-5lw"/>
+                                </connections>
                             </stepper>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="13" minValue="12" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="ToG-AW-rHz">
                                 <rect key="frame" x="249" y="186" width="154" height="31"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="5BN-X4-Bar"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tip Percentage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nuv-rG-AX1">
                                 <rect key="frame" x="251" y="224" width="150" height="21"/>
@@ -223,8 +229,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cost Per Person" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ql-Ue-DcZ">
-                                <rect key="frame" x="0.0" y="224" width="191" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cost Per Person" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ql-Ue-DcZ">
+                                <rect key="frame" x="0.0" y="224" width="243" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="6DT-FI-Veo"/>
+                                    <constraint firstAttribute="width" constant="245" id="NLM-C2-GNN"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -239,6 +249,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lyZ-oL-fOq" firstAttribute="top" secondItem="Oeb-92-CUv" secondAttribute="bottom" constant="79" id="4oC-i9-iyk"/>
                             <constraint firstItem="lyZ-oL-fOq" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottomMargin" id="8cL-VD-5Qx"/>
                             <constraint firstItem="n2p-dT-a8M" firstAttribute="top" secondItem="FOF-Yy-eYm" secondAttribute="bottom" constant="1" id="FCI-Nc-TEj"/>
                             <constraint firstItem="n2p-dT-a8M" firstAttribute="centerY" secondItem="czX-zv-45g" secondAttribute="centerY" id="FjO-fp-UaA"/>
@@ -249,8 +260,10 @@
                             <constraint firstItem="UaN-2R-1sz" firstAttribute="leading" secondItem="TNi-0d-EQ9" secondAttribute="trailing" constant="1" id="RJz-mO-H43"/>
                             <constraint firstItem="czX-zv-45g" firstAttribute="top" secondItem="heF-1q-LdL" secondAttribute="bottom" constant="1" id="TSl-yU-2kp"/>
                             <constraint firstItem="uoy-Pj-B6Z" firstAttribute="top" secondItem="bXa-6J-A8U" secondAttribute="bottom" constant="1" id="XFp-tA-zXI"/>
+                            <constraint firstItem="Oeb-92-CUv" firstAttribute="top" secondItem="1ql-Ue-DcZ" secondAttribute="bottom" id="XRl-21-17F"/>
                             <constraint firstItem="lyZ-oL-fOq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YH8-Yg-VO9"/>
                             <constraint firstItem="FOF-Yy-eYm" firstAttribute="top" secondItem="UaN-2R-1sz" secondAttribute="bottom" constant="1" id="YhS-vG-09t"/>
+                            <constraint firstItem="Oeb-92-CUv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="beM-FZ-1oA"/>
                             <constraint firstItem="bXa-6J-A8U" firstAttribute="leading" secondItem="FOF-Yy-eYm" secondAttribute="trailing" constant="1" id="bvt-bN-grn"/>
                             <constraint firstItem="uoy-Pj-B6Z" firstAttribute="centerY" secondItem="n2p-dT-a8M" secondAttribute="centerY" id="dgl-jj-JBA"/>
                             <constraint firstItem="F42-FZ-uFl" firstAttribute="centerX" secondItem="fid-Wh-jUo" secondAttribute="centerX" id="e53-BQ-4xz"/>
@@ -260,6 +273,7 @@
                             <constraint firstItem="4sY-3c-5M8" firstAttribute="centerX" secondItem="F42-FZ-uFl" secondAttribute="centerX" id="l22-qQ-Sak"/>
                             <constraint firstItem="fid-Wh-jUo" firstAttribute="top" secondItem="F42-FZ-uFl" secondAttribute="bottom" constant="1" id="mFQ-8V-C55"/>
                             <constraint firstItem="fid-Wh-jUo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="mif-oV-eCf"/>
+                            <constraint firstItem="1ql-Ue-DcZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="njX-I3-OXp"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fid-Wh-jUo" secondAttribute="bottom" id="oCQ-VH-YiM"/>
                             <constraint firstItem="bXa-6J-A8U" firstAttribute="top" secondItem="CNW-oD-zDV" secondAttribute="bottom" constant="1" id="r6M-hq-WDN"/>
                             <constraint firstItem="heF-1q-LdL" firstAttribute="top" secondItem="TNi-0d-EQ9" secondAttribute="bottom" constant="1" id="rm5-Jf-Dld"/>
@@ -292,7 +306,8 @@
                         <outlet property="decimalButton" destination="bXa-6J-A8U" id="ODG-Ya-Wsk"/>
                         <outlet property="deleteButton" destination="CNW-oD-zDV" id="uNC-OW-BVX"/>
                         <outlet property="personCountStepper" destination="Oeb-92-CUv" id="lQe-e5-5q4"/>
-                        <outlet property="tipPercentageLabel" destination="Nuv-rG-AX1" id="66p-pe-ZxV"/>
+                        <outlet property="tipSlider" destination="ToG-AW-rHz" id="S5Y-0T-7Rs"/>
+                        <outlet property="tipSliderLabel" destination="Nuv-rG-AX1" id="NWa-jc-vfn"/>
                         <outlet property="totalTipLabel" destination="5ql-1h-8E2" id="geJ-D3-Acn"/>
                         <outlet property="userTextInput" destination="gd4-bt-nY5" id="wDK-Sv-G0c"/>
                     </connections>

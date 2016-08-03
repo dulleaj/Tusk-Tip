@@ -16,5 +16,6 @@
 - (NSString*)tipPercentLabel: (float) percentage;
 - (NSString*)tipPerPersonLabelIs: (NSString*)dollars splitBetween: (float)people;
 - (NSString*)adjustedDecimalFor: (float)number with: (int)digits;
+- (NSString*)calculateTotalof: (NSString*)tip and: (NSString*)amount;
 
 @end

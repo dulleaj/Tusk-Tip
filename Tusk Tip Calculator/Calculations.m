@@ -27,6 +27,15 @@
     return tipPercentString;
 }
 
+//Calculates sum of amount and tip to get the total
+- (NSString*)calculateTotalof:(NSString *)tip and:(NSString *)amount {
+    
+    //float tipFloat = [tip floatValue];
+    //float amountFloat = [amount floatValue];
+    float total = ([tip floatValue])+([amount floatValue]);
+    return [self adjustedDecimalFor:total with:2];
+}
+
 //Calculates what the tip cost per person is
 - (NSString*)tipPerPersonLabelIs:(NSString*)dollars splitBetween:(float)people {
     

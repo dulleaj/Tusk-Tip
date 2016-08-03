@@ -28,32 +28,41 @@
 @property (strong, nonatomic) IBOutlet UILabel *tipSliderLabel;
 @property (strong, nonatomic) IBOutlet UILabel *totalTipLabel;
 @property (strong, nonatomic) IBOutlet UILabel *costPerPersonLabel;
+@property (strong, nonatomic) IBOutlet UILabel *totalLabel;
 @property int totalDigitsInTextInput;
 @property Calculations* query;
-
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 @end
+
+/*
+Need to limit the total number of digits user can input
+Need to format the userTextInput
+I'm getting some error with the total tip per person, which needs to be changed to reflect the bill total split amongst the number of people
+*/
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.backgroundImage.image = [UIImage imageNamed:@"receipt-background3"];
+    self.userTextInput.backgroundColor = [UIColor clearColor];
     self.query = [[Calculations alloc] init];
     self.userTextInput.text = @"0";
     self.tipSliderLabel.text = [self.query tipPercentLabel:self.tipSlider.value];
-    [self updateTipLabelAndCostPerPersonLabel];
+    [self updateLabels];
 }
 
 - (IBAction)sliderValueChanged:(UISlider *)sender {
-
+    
+    self.tipSlider.value = roundf(self.tipSlider.value);
     self.tipSliderLabel.text = [self.query tipPercentLabel:self.tipSlider.value];
-    [self updateTipLabelAndCostPerPersonLabel];
+    [self updateLabels];
 }
 
 - (IBAction)stepperValueChanged:(id)sender {
     
     self.costPerPersonLabel.text = [self.query tipPerPersonLabelIs:[self.query tipCalculation:self.userTextInput.text multipliedBy:self.tipSlider.value] splitBetween:self.personCountStepper.value];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -65,14 +74,14 @@
     [self removeZero];
     self.totalDigitsInTextInput += 1;
     self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"1"];
-    [self updateTipLabelAndCostPerPersonLabel];}
+    [self updateLabels];}
 
 - (IBAction)button2WasPressed:(id)sender {
     
     [self removeZero];
     self.totalDigitsInTextInput += 1;
     self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"2"];
-    [self updateTipLabelAndCostPerPersonLabel];
+    [self updateLabels];
 }
 
 - (IBAction)button3WasPressed:(id)sender {
@@ -80,7 +89,7 @@
     [self removeZero];
     self.totalDigitsInTextInput += 1;
     self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"3"];
-    [self updateTipLabelAndCostPerPersonLabel];
+    [self updateLabels];
 }
 
 - (IBAction)button4WasPressed:(id)sender {
@@ -88,7 +97,7 @@
     [self removeZero];
     self.totalDigitsInTextInput += 1;
     self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"4"];
-    [self updateTipLabelAndCostPerPersonLabel];
+    [self updateLabels];
 }
 
 - (IBAction)button5WasPressed:(id)sender {
@@ -96,7 +105,7 @@
     [self removeZero];
     self.totalDigitsInTextInput += 1;
     self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"5"];
-    [self updateTipLabelAndCostPerPersonLabel];
+    [self updateLabels];
 }
 
 - (IBAction)button6WasPressed:(id)sender {
@@ -104,7 +113,7 @@
     [self removeZero];
     self.totalDigitsInTextInput += 1;
     self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"6"];
-    [self updateTipLabelAndCostPerPersonLabel];
+    [self updateLabels];
 }
 
 - (IBAction)button7WasPressed:(id)sender {
@@ -112,7 +121,7 @@
     [self removeZero];
     self.totalDigitsInTextInput += 1;
     self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"7"];
-    [self updateTipLabelAndCostPerPersonLabel];
+    [self updateLabels];
 }
 
 - (IBAction)button8WasPressed:(id)sender {
@@ -120,7 +129,7 @@
     [self removeZero];
     self.totalDigitsInTextInput += 1;
     self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"8"];
-    [self updateTipLabelAndCostPerPersonLabel];
+    [self updateLabels];
 }
 
 - (IBAction)button9WasPressed:(id)sender {
@@ -128,7 +137,7 @@
     [self removeZero];
     self.totalDigitsInTextInput += 1;
     self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"9"];
-    [self updateTipLabelAndCostPerPersonLabel];
+    [self updateLabels];
 }
 
 - (IBAction)button0WasPressed:(id)sender {
@@ -140,7 +149,7 @@
         self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"0"];
     }
     
-    [self updateTipLabelAndCostPerPersonLabel];
+    [self updateLabels];
 }
 
 - (IBAction)decimalButtonWasPressed:(id)sender {
@@ -152,7 +161,7 @@
         self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"."];
     }
     
-    [self updateTipLabelAndCostPerPersonLabel];
+    [self updateLabels];
 }
 
 - (IBAction)deleteButtonWasPressed:(id)sender {
@@ -163,7 +172,7 @@
         self.totalDigitsInTextInput -= 1;
     }
     
-    [self updateTipLabelAndCostPerPersonLabel];
+    [self updateLabels];
 }
 
 //Method for deleting
@@ -205,12 +214,13 @@
 }
 
 //Update the Tip Total label and the Cost Per Person label
-- (void)updateTipLabelAndCostPerPersonLabel{
+- (void)updateLabels{
 
-    self.totalTipLabel.text = [NSString stringWithFormat: @"Tip Total: %@",[self.query tipCalculation:self.userTextInput.text multipliedBy:self.tipSlider.value]];
+    self.totalTipLabel.text = [NSString stringWithFormat: @"%@",[self.query tipCalculation:self.userTextInput.text multipliedBy:self.tipSlider.value]];
     
-    self.costPerPersonLabel.text = [self.query tipPerPersonLabelIs:[self.query tipCalculation:self.userTextInput.text multipliedBy:self.tipSlider.value] splitBetween:self.personCountStepper.value];
+    self.costPerPersonLabel.text = [self.query tipPerPersonLabelIs:self.totalTipLabel.text splitBetween:self.personCountStepper.value];
 
+    self.totalLabel.text = [self.query calculateTotalof:self.totalTipLabel.text and:self.userTextInput.text];
 }
 
 //*****Getting +infinity and NaN - something is wrong with formular for calculating cost per person

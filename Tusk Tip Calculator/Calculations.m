@@ -28,7 +28,7 @@
 }
 
 //Calculates sum of amount and tip to get the total
-- (NSString*)calculateTotalof:(NSString *)tip and:(NSString *)amount {
+- (NSString*)calculateTotalOf:(NSString *)tip and:(NSString *)amount {
     
     //float tipFloat = [tip floatValue];
     //float amountFloat = [amount floatValue];
@@ -45,8 +45,8 @@
     int headCount = (int)ceil(people);
     
     return [NSString stringWithFormat:@"For %d people: $%@ each.",headCount,[self adjustedDecimalFor:costPerPerson with:2]];
-    
 }
+
 
 //Reduces floats to X decimals
 - (NSString*)adjustedDecimalFor:(float)number with:(int)digits {

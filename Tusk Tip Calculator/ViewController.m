@@ -71,10 +71,13 @@ I'm getting some error with the total tip per person, which needs to be changed 
 
 - (IBAction)button1WasPressed:(id)sender {
     
-    [self removeZero];
-    self.totalDigitsInTextInput += 1;
-    self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"1"];
-    [self updateLabels];}
+    //[self removeZero];
+    //self.totalDigitsInTextInput += 1;
+    //self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"1"];
+    //[self updateLabels];
+
+    [self limitTextInputWhenUserPressesButton:@"1"];
+}
 
 - (IBAction)button2WasPressed:(id)sender {
     
@@ -220,9 +223,36 @@ I'm getting some error with the total tip per person, which needs to be changed 
     
     self.costPerPersonLabel.text = [self.query tipPerPersonLabelIs:self.totalTipLabel.text splitBetween:self.personCountStepper.value];
 
-    self.totalLabel.text = [self.query calculateTotalof:self.totalTipLabel.text and:self.userTextInput.text];
+    self.totalLabel.text = [self.query calculateTotalOf:self.totalTipLabel.text and:self.userTextInput.text];
 }
 
-//*****Getting +infinity and NaN - something is wrong with formular for calculating cost per person
+- (void)limitTextInputWhenUserPressesButton: (NSString*)number {
+    
+    if (self.totalDigitsInTextInput >= 7){
+        self.button0.enabled = NO;
+        self.button1.enabled = NO;
+        self.button2.enabled = NO;
+        self.button3.enabled = NO;
+        self.button4.enabled = NO;
+        self.button5.enabled = NO;
+        self.button6.enabled = NO;
+        self.button7.enabled = NO;
+        self.button8.enabled = NO;
+        self.button9.enabled = NO;
+        self.decimalButton.enabled = NO;
+    }else{
+        [self removeZero];
+        self.totalDigitsInTextInput += 1;
+        self.userTextInput.text = [self.userTextInput.text stringByAppendingString:number];
+        [self updateLabels];
+    }
+}
+/*
+ [self removeZero];
+ self.totalDigitsInTextInput += 1;
+ self.userTextInput.text = [self.userTextInput.text stringByAppendingString: @"1"];
+ [self updateLabels];}
+*/
+
 
 @end
